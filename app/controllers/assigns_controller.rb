@@ -61,4 +61,8 @@ class AssignsController < ApplicationController
     another_team = Assign.find_by(user_id: assigned_user.id).team
     change_keep_team(assigned_user, another_team) if assigned_user.keep_team_id == assign.team_id
   end
+
+  def find_team(id)
+    Team.friendly.find(id)
+  end
 end
