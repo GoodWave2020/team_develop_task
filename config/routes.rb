@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
   resource :user
-  
+
   resources :teams do
     resources :assigns, only: %w(create destroy)
     resources :agendas, shallow: true do
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  post "change_owner" => "teams#change_owner" 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
